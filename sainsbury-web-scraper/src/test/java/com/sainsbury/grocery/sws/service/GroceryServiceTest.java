@@ -6,6 +6,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.UnsupportedEncodingException;
+
 import static com.sainsbury.grocery.sws.util.Constants.PRODUCTS_URL;
 
 public class GroceryServiceTest {
@@ -63,7 +65,7 @@ public class GroceryServiceTest {
             "      \"description\": \"Ripe & ready\"\n" +
             "    },\n" +
             "    {\n" +
-            "      \"title\": \"Sainsbury's Papaya, Ripe (each) Only £1.25: Save 25p PLUS Only £1.25: Save 25p\",\n" +
+            "      \"title\": \"Sainsbury's Papaya, Ripe (each) Only £1.25: Save 25p\",\n" +
             "      \"size\": \"189kb\",\n" +
             "      \"unit_price\": 1.25,\n" +
             "      \"description\": \"Papaya\"\n" +
@@ -96,15 +98,18 @@ public class GroceryServiceTest {
             "  \"total\": 26.25\n" +
             "}";
 
+    String expected;
+
 	@Before
-	public void setup(){
+	public void setup() throws UnsupportedEncodingException {
 		groceryService = new GroceryService(PRODUCTS_URL);
+        expected = new String(EXPECTED.getBytes("UTF-8"), "UTF-8");
 	}
 	
 	@Test
 	public void shouldDisplayProductCart(){
         String productCartJson = groceryService.displayProductCart();
-        Assert.assertEquals(EXPECTED.replace("Â",""), productCartJson);
+        Assert.assertEquals(expected, productCartJson);
 	}
 
 }

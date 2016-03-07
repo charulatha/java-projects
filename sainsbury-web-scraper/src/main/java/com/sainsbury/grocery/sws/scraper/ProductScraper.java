@@ -5,6 +5,7 @@ import com.sainsbury.grocery.sws.model.ProductCart;
 import com.sainsbury.grocery.sws.util.Constants;
 import com.sainsbury.grocery.sws.util.WebScraper;
 
+import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 
 public class ProductScraper implements Constants {
@@ -55,11 +56,9 @@ public class ProductScraper implements Constants {
 	
 	public BigDecimal getPrice(int index){
 		String productPrice = scraper.scrapeElement(PRODUCT_UNIT_PRICE_KEY,index);
-        productPrice = productPrice.replace("£","");
-		productPrice = productPrice.replace("/","");
-		productPrice = productPrice.replace("unit","");
-		return new BigDecimal(productPrice);
-	}
+        productPrice = productPrice.replaceAll("[^.0-9]+", "");
+        return new BigDecimal(productPrice);
+    }
 	
 	public long getSize(String url){
 		return scraper.pageSize(url);

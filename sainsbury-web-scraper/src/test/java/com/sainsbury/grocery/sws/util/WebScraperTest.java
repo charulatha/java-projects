@@ -7,6 +7,8 @@ import org.junit.Test;
 import static com.sainsbury.grocery.sws.util.Constants.PRODUCTS_URL;
 import static com.sainsbury.grocery.sws.util.Constants.PRODUCT_URL;
 import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class WebScraperTest {
 

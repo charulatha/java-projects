@@ -8,5 +8,6 @@ public class ConsoleApp {
 	public static void main(String[] args) {
 		GroceryService groceryService = new GroceryService(PRODUCTS_URL);
 		System.out.println(groceryService.displayProductCart());
+        System.exit(0);
 	}
 }

@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.math.BigDecimal;
 
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class JsonConverterTest {
